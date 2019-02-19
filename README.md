@@ -1,5 +1,5 @@
 # wintercamp
-recording problems
+recording problems </br>
 记录使用标准markdown语法
 
 
@@ -21,8 +21,8 @@ int main() {
 
 ## e.g.[codeforcesXXXXC][模拟]a_plus_b_problem
 ## 题目描述
-输出a+b的值。\\
-$0\le a,b\le 1e18$ \\
+输出a+b的值。</br>
+$0\le a,b\le 1e18$ </br>
 (简单描述即可，起码要自己能看懂，也可以直接把题面粘过来，题目链接也可)
 ## 思路分析
 直接输出a+b, 小心溢出。
