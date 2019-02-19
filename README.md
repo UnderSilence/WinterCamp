@@ -4,7 +4,7 @@ recording problems
 
 
 # 标准记录格式
-[题目oj+题号][知识点]题目标题(*可省略标题)
+## [题目oj+题号][知识点]题目标题(*可省略标题)
 
 ## 题目描述
 blablablablabla
@@ -18,13 +18,12 @@ int main() {
   return 0;
 }
 ```
-e.g.
 
-[codeforcesXXXXC][模拟]a_plus_b_problem
+## e.g.[codeforcesXXXXC][模拟]a_plus_b_problem
 ## 题目描述
 输出a+b的值。\\
-$0\le a,b\le 1e18$
-(简单描述即可，起码要自己能看懂，也可以直接把题面粘过来)
+$0\le a,b\le 1e18$ \\
+(简单描述即可，起码要自己能看懂，也可以直接把题面粘过来，题目链接也可)
 ## 思路分析
 直接输出a+b, 小心溢出。
 ## 核心代码
