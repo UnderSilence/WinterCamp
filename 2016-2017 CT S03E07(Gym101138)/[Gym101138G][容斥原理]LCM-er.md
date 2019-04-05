@@ -17,10 +17,10 @@ $$
 
 那么当且仅当将某序列的$lcm$质因数分解后，存在某个质数的幂小于$x$质因数分解后(若没有对应质数就将幂视为$0$)对应质数的幂，此序列不合法。
 $$
-\begin{align*}
+\begin{aligned}
 x &= p_1^{k_1}p_2^{k_2}\cdots p_m^{k_m} \\
 lcm &= p_1^{t_1}p_2^{t_2}\cdots p_m^{t_m} \\
-\end{align*}
+\end{aligned}
 \\
 需要满足\ k_i \le t_i (1\le i\le m)
 $$
@@ -31,14 +31,14 @@ $$
 $q_i代表第i个位置合法的情况, S代表所有位置的集合\{1,2,3,\cdots,m\},F代表满足指定情况下的方案数​$
 
 $$
-\begin{align*}
+\begin{aligned}
 F\left(\bigcap_{i=1}^m q_i \right) &= All -  F\left(\bigcup_{i=1}^m\overline{q_i} \right) \\
 F\left(\bigcup_{i=1}^m\overline{q_i} \right)  &= F(\overline{q_1})+F(\overline{q_2})+\cdots+F(\overline{q_m}) \\
-&-\sum_{1\le i<j\le m}F(\overline{q_i}\cap\overline{q_j}) \\
-&+\sum_{1\le i<j<k\le m}F(\overline{q_i}\cap\overline{q_j}\cap\overline{q_j}) \\
+&-\sum_{1\le i\lt j\le m}F(\overline{q_i}\cap\overline{q_j}) \\
+&+\sum_{1\le i\lt j\lt k\le m}F(\overline{q_i}\cap\overline{q_j}\cap\overline{q_j}) \\
 &\cdots \\
 &+\sum_{t\subseteq S}(-1)^{|t|}F\left( \bigcap_{i\in t}\overline{q_i}\ \right)
-\end{align*}
+\end{aligned}
 $$
 
 现在我们需要关注的就是对于一个位置集合，如何计算 $F\left( \bigcap_{i\in t}\overline{q_i}\ \right)​$。
@@ -48,16 +48,16 @@ $$
 联想在小于$n$的数中筛选不是$2,3,5$倍数的数字，我们再次利用容斥即可。 
 $$
 G(q_i)代表[a,b]区间内不为对应i位置质数幂倍数的数字数\\
-G\left( \bigcap_{i\subseteq t}\overline{q_i}\ \right) =(b-a+1)+\sum_{j\subseteq i}(-1)^{|j|}\left( \Big\lfloor \frac{b}{\prod_{x\in j}p_x^{k_x}}\Big\rfloor - \Big\lfloor \frac{a-1}{\prod_{x\in j}p_x^{k_x}}\Big\rfloor \right)
+G\left( \bigcap_{i\in t}\overline{q_i}\ \right) =(b-a+1)+\sum_{j\subseteq t}(-1)^{|j|}\left( \Big\lfloor \frac{b}{\prod_{x\in j}p_x^{k_x}}\Big\rfloor - \Big\lfloor \frac{a-1}{\prod_{x\in j}p_x^{k_x}}\Big\rfloor \right)
 $$
 将筛出的数字看作一个集合，大小为$k$，现在可以从中任意选取$n$个数，每个数选取次数不限，求最后构成序列的有序方案数；即计算该多重集的$n$组合，可构成的方案数为$\binom{n+k-1}{n}$（挡板法）。
 $$
-F\left( \bigcap_{i\subseteq t}\overline{q_i}\ \right) = \binom{G\left( \bigcap_{i\subseteq t}\overline{q_i}\ \right)+n-1}{n}
+F\left( \bigcap_{i\in t}\overline{q_i}\ \right) = \binom{G\left( \bigcap_{i\in t}\overline{q_i}\ \right)+n-1}{n}
 $$
 
-整个过程需要两个容斥，做一次枚举子集即可，考虑到构成$x​$的质数幂不超过$9$个，所以
+整个过程需要两个容斥，做一次枚举子集即可，考虑到构成$x​$的质数幂不超过$9$个，复杂度$O(n2^{\omega(n)}+3^{\omega(n)})$。
 
-PS:代码写得异常奇怪，就想试试不开数组只用vector，复杂度$O(n2^{\omega(n)}+3^{\omega(n)})$
+PS:代码写得异常奇怪，就想试试不开数组只用vector
 
 ```c++
 #include <bits/stdc++.h>
